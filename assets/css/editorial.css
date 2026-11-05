@@ -1,0 +1,166 @@
+/* ==========================================================================
+   NO.VAZIO — JÚLIA RIBEIRO
+   Visual Essay / Photographic Art Direction / Experimental Cinema
+   ========================================================================== */
+
+:root {
+  --color-black: #000000;
+  --color-dark: #121212;
+  --color-charcoal: #222222;
+  --color-gray-light: #b8b8b8;
+  --color-white: #ffffff;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-black);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Seleção de texto limpa */
+::selection {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Scrollbar Sutil e Invisível */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #333333;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* Filtros Autênticos de Fotografia */
+.filter-bw {
+  filter: grayscale(100%) contrast(115%);
+}
+
+.filter-bw-high {
+  filter: grayscale(100%) contrast(125%) brightness(95%);
+}
+
+.filter-sepia-beach {
+  filter: sepia(30%) grayscale(30%) contrast(110%);
+}
+
+.filter-sepia-warm {
+  filter: sepia(35%) contrast(105%);
+}
+
+.filter-portrait-blur {
+  filter: grayscale(100%) contrast(110%) brightness(92%);
+}
+
+/* Efeito de Rastro Tipográfico Cinético — "movimento" */
+.motion-ghost-container {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+.motion-ghost-1 {
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  opacity: 0.38;
+  filter: blur(0.4px);
+  pointer-events: none;
+}
+.motion-ghost-2 {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  opacity: 0.16;
+  filter: blur(0.8px);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .motion-ghost-1 {
+    top: 8px;
+    left: 10px;
+  }
+  .motion-ghost-2 {
+    top: 16px;
+    left: 20px;
+  }
+}
+
+/* Imagens do Ensaio */
+.essay-photo {
+  position: relative;
+  overflow: hidden;
+}
+.essay-photo img {
+  transition: transform 1.2s var(--ease-cinematic), filter 0.8s ease;
+  will-change: transform;
+}
+.essay-photo:hover img {
+  transform: scale(1.02);
+}
+
+/* Navegação Etérea em Difference */
+.ethereal-header {
+  mix-blend-mode: difference;
+  transition: opacity 0.5s ease;
+}
+
+/* Visualizador de Imagem Minimalista (<dialog>) */
+dialog:modal {
+  overscroll-behavior: contain;
+  border: none;
+  background: transparent;
+  padding: 0;
+  max-width: 96vw;
+  max-height: 96vh;
+  margin: auto;
+  outline: none;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Acessibilidade: prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .essay-photo img {
+    transition: none !important;
+    transform: none !important;
+  }
+}
